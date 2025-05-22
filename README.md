@@ -1,17 +1,17 @@
 # Detecção de Doenças em folhas do Tomate
 
-## Equipe
+### Equipe
 
 Danielli Borges \
 Ricardo Alexandre
 
-## Funcionalidades
+### Funcionalidades
 
-- **Upload de Imagem**: Os usuários podem fazer upload de uma imagem de uma folha de tomate.
-- **Predição de Doença**: A aplicação utiliza o modelo YOLOv8 para detectar e classificar doenças presentes na imagem.
-- **Exibição de Resultados**: Os resultados são apresentados com a imagem original anotada com as predições e um gráfico de barras mostrando a confiança de cada predição.
+- Upload de imagem de folha de tomate
+- Identificação automática de doenças usando YOLOv8
+- Visualização dos resultados com marcações e gráfico de confiança
 
-## Pré-requisitos
+### Requisitos
 
 - Python 3.11
 - Flask
@@ -24,10 +24,9 @@ Ricardo Alexandre
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/Marcossakaguchi5/ai
+   git clone https://github.com/danisborges/trabalhoIA
    cd ai
+2. Clone o repositório:
 
-## Iniciar a aplicação Flask
-    
-```bash
-  python app.py
+   ```bash
+   python app.py

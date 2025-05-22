@@ -99,16 +99,8 @@ body {
               <label class="btn btn-secondary active">
                 <input type="radio" name="upload_type" id="upload_file" autocomplete="off" checked> Anexar Imagem
               </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="upload_type" id="upload_camera" autocomplete="off"> Tirar Foto
-              </label>
             </div>
 
-            <div id="camera_section" style="display:none;">
-              <video id="camera_feed" width="100%" height="auto" style="max-width: 100%;"></video>
-              <button type="button" class="btn btn-secondary btn-block mt-2" onclick="takePicture()">Tirar Foto</button>
-              <canvas id="canvas" style="display:none;"></canvas>
-            </div>
             <div class="form-group">
               <input type="file" class="form-control-file" id="file" name="file">
             </div>

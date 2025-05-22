@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Resultado de predição</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    @font-face {
+  font-family: 'Montserrat';
+  src: url('/static/fonts/Montserrat-Regular.woff2') format('woff2'),
+       url('/static/fonts/Montserrat-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Aplicar a fonte Montserrat */
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa; /* Cor de fundo */
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff; /* Fundo do container */
+      border-radius: 8px; /* Borda arredondada */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+    .py-5 {
+      margin-top: 30px; /* Espaçamento no topo */
+      margin-bottom: 30px; /* Espaçamento na base */
+    }
+    .figure-img {
+      max-width: 100%;
+      height: auto;
+    }
+    .figure {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .figure-caption {
+      font-size: large;
+    }
+    .list-group-item {
+      padding: 20px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .btn-new-analysis {
+      font-size: 18px;
+    }
+    .summary-text {
+    white-space: pre-line;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="py-2 text-center">
+      <h1 class="mb-4">Resultado de predição</h1>
+    </div>
+
+    <!-- Classified Image Section -->
+    <div class="row">
+      <div class="col-md-12">
+        <figure class="figure">
+          <img src="{{ url_for('send_image', filename=image_path.split('/')[-1]) }}" alt="Classified Image" class="figure-img img-fluid rounded">
+          <figcaption class="figure-caption">Imagem Classificada</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Prediction Results Section -->
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="list-group">
+          {% for class, data in best_predictions.items() %}
+          <li class="list-group-item" style="font-size: 17px;">
+            <strong>Classe:</strong> <strong>{{ class }}</strong><br>
+            <strong>Confiança:</strong> {{ data['confidence'] }}<br>
+            <strong>Doença:</strong><br>
+            {{ summaries[class] | safe }}<br>
+            
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    
+    
+
+    <!-- Charts Section -->
+    <div class="row">
+      <div class="col-md-12">
+        <canvas id="predictionChart" width="400" height="200"></canvas>
+      </div>
+    </div>
+
+    <!-- New Analysis Button -->
+    <div class="row">
+      <div class="col-md-12">
+        <a href="{{ url_for('upload_image') }}" class="btn btn-primary btn-block btn-new-analysis mt-4">Nova análise</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('predictionChart').getContext('2d');
+    const predictionChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [{% for class, data in best_predictions.items() %} '{{ class }}', {% endfor %}],
+        datasets: [{
+          label: 'Confiança',
+          data: [{% for class, data in best_predictions.items() %} {{ data['confidence'] }}, {% endfor %}],
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

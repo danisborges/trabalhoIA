@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+      /* Importar a fonte Montserrat */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/static/fonts/Montserrat-Regular.woff2') format('woff2'),
+       url('/static/fonts/Montserrat-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Aplicar a fonte Montserrat */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+      .figure-img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .col-md-4 {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+      }
+      .figure-caption{
+        font-size: large;
+      }
+      .fim{
+        margin-bottom: 10px;
+      }
+      @media (max-width: 768px) {
+        .col-md-4 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+      }
+      @media (max-width: 576px) {
+        .col-md-4 {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+      .card-custom {
+  border: 1px solid #17a2b8; /* Cor da borda */
+  border-radius: 8px; /* Arredondamento das bordas */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra */
+  transition: box-shadow 0.3s ease; /* Transição suave da sombra */
+
+  /* Estilo do card */
+  background-color: #fff; /* Cor de fundo */
+}
+
+.card-custom:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Aumenta a sombra ao passar o mouse */
+}
+
+.card-custom .card-body {
+  padding: 1.25rem; /* Espaçamento interno */
+}
+
+.card-custom .card-title {
+  font-size: 1.2rem; /* Tamanho da fonte do título */
+  font-weight: bold; /* Negrito */
+}
+
+.card-custom img {
+  border-top-left-radius: 8px; /* Arredonda canto superior esquerdo da imagem */
+  border-top-right-radius: 8px; /* Arredonda canto superior direito da imagem */
+  height: 200px; /* Altura fixa para as imagens */
+  object-fit: cover; /* Garante que a imagem cubra todo o espaço disponível */
+}
+
+
+    </style>
+    <title>Identificador de doenças no tomate</title>
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <div class="py-3 text-center">
+        <h2>Analisador de imagem</h2>
+      </div>
+      
+      <!-- Images Display Section -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card-custom">
+              <img src="{{ url_for('static', filename='images/banner/RequeimaPrecoce(Early Blight).jpeg') }}" class="card-img-top figure-img img-fluid rounded" alt="Image 1">
+              <div class="card-body">
+                <h5 class="card-title text-center">Requeima Precoce (Early Blight)</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card-custom">
+              <img src="{{ url_for('static', filename='images/banner/health.jpg') }}" class="card-img-top figure-img img-fluid rounded" alt="Image 2">
+              <div class="card-body">
+                <h5 class="card-title text-center">Tomate Saudável</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card-custom">
+              <img src="{{ url_for('static', filename='images/banner/requeimatardia.jpeg') }}" class="card-img-top figure-img img-fluid rounded" alt="Image 3">
+              <div class="card-body">
+                <h5 class="card-title text-center">Requeima Tardia</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card-custom">
+              <img src="{{ url_for('static', filename='images/banner/leafminer21.jpg') }}" class="card-img-top figure-img img-fluid rounded" alt="Image 4">
+              <div class="card-body">
+                <h5 class="card-title text-center">Minadora</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card-custom">
+              <img src="{{ url_for('static', filename='images/banner/mofo.jpg') }}" class="card-img-top figure-img img-fluid rounded" alt="Image 5">
+              <div class="card-body">
+                <h5 class="card-title text-center">Mofo das Folhas</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card-custom">
+              <img src="{{ url_for('static', filename='images/banner/mosaic.jpg') }}" class="card-img-top figure-img img-fluid rounded" alt="Image 6">
+              <div class="card-body">
+                <h5 class="card-title text-center">Vírus do Mosaico</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card-custom">
+              <img src="{{ url_for('static', filename='images/banner/Septorai_lycopersici50.jpg') }}" class="card-img-top figure-img img-fluid rounded" alt="Image 7">
+              <div class="card-body">
+                <h5 class="card-title text-center">Septoriose</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card-custom">
+              <img src="{{ url_for('static', filename='images/banner/spider-mites-fig-11.jpg') }}" class="card-img-top figure-img img-fluid rounded" alt="Image 8">
+              <div class="card-body">
+                <h5 class="card-title text-center">Ácaros-Aranha</h5>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4 mb-4">
+            <div class="card-custom">
+              <img src="{{ url_for('static', filename='images/banner/enrrolamento.jpeg') }}" class="card-img-top figure-img img-fluid rounded" alt="Image 9">
+              <div class="card-body">
+                <h5 class="card-title text-center">Vírus do Enrolamento Amarelo do Tomateiro</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    <div class="container">
+      <div class="py-2 text-center">
+        <h2>Analisador de imagem</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <form method="post" enctype="multipart/form-data" id="upload_form">
+
+            <div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+              <label class="btn btn-secondary active">
+                <input type="radio" name="upload_type" id="upload_file" autocomplete="off" checked> Anexar Imagem
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="upload_type" id="upload_camera" autocomplete="off"> Tirar Foto
+              </label>
+            </div>
+
+            <div id="camera_section" style="display:none;">
+              <video id="camera_feed" width="100%" height="auto" style="max-width: 100%;"></video>
+              <button type="button" class="btn btn-secondary btn-block mt-2" onclick="takePicture()">Tirar Foto</button>
+              <canvas id="canvas" style="display:none;"></canvas>
+            </div>
+            <div class="form-group">
+              <input type="file" class="form-control-file" id="file" name="file">
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block fim">Analisar Imagem</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById('upload_camera').addEventListener('click', function() {
+        document.getElementById('camera_section').style.display = 'block';
+        startCamera();
+      });
+
+      document.getElementById('upload_file').addEventListener('click', function() {
+        document.getElementById('camera_section').style.display = 'none';
+        stopCamera();
+      });
+
+      let mediaStream = null;
+      const video = document.getElementById('camera_feed');
+      const canvas = document.getElementById('canvas');
+      const context = canvas.getContext('2d');
+
+      function startCamera() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+              mediaStream = stream;
+              video.srcObject = stream;
+              video.play();
+            })
+            .catch(function(err) {
+              console.error('Erro ao acessar a câmera: ', err);
+            });
+        }
+      }
+
+      function stopCamera() {
+        if (mediaStream) {
+          mediaStream.getTracks().forEach(track => track.stop());
+        }
+      }
+
+      function takePicture() {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+        canvas.toBlob(function(blob) {
+          const file = new File([blob], 'snapshot.png', { type: 'image/png' });
+          const fileInput = document.getElementById('file');
+          const fileData = new DataTransfer();
+          fileData.items.add(file);
+          fileInput.files = fileData.files;
+        }, 'image/png');
+      }
+    </script>
+  </body>
+</html>
